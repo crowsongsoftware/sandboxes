@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular": {
+    "view-child": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -13,43 +13,30 @@
           "strict": true
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/view-child",
+      "sourceRoot": "projects/view-child/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.app.json",
-            "aot": true,
+            "outputPath": "dist/view-child",
+            "index": "projects/view-child/src/index.html",
+            "main": "projects/view-child/src/main.ts",
+            "polyfills": "projects/view-child/src/polyfills.ts",
+            "tsConfig": "projects/view-child/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/view-child/src/favicon.ico",
+              "projects/view-child/src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "projects/view-child/src/styles.scss"
             ],
             "scripts": []
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -61,71 +48,167 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ]
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/view-child/src/environments/environment.ts",
+                  "with": "projects/view-child/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
-          }
+          },
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "angular:build"
-          },
           "configurations": {
             "production": {
-              "browserTarget": "angular:build:production"
+              "browserTarget": "view-child:build:production"
+            },
+            "development": {
+              "browserTarget": "view-child:build:development"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular:build"
+            "browserTarget": "view-child:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
+            "main": "projects/view-child/src/test.ts",
+            "polyfills": "projects/view-child/src/polyfills.ts",
+            "tsConfig": "projects/view-child/tsconfig.spec.json",
+            "karmaConfig": "projects/view-child/karma.conf.js",
+            "inlineStyleLanguage": "scss",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/view-child/src/favicon.ico",
+              "projects/view-child/src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "projects/view-child/src/styles.scss"
             ],
             "scripts": []
           }
+        }
+      }
+    },
+    "git-sandbox": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/git-sandbox",
+      "sourceRoot": "projects/git-sandbox/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+            "outputPath": "dist/git-sandbox",
+            "index": "projects/git-sandbox/src/index.html",
+            "main": "projects/git-sandbox/src/main.ts",
+            "polyfills": "projects/git-sandbox/src/polyfills.ts",
+            "tsConfig": "projects/git-sandbox/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/git-sandbox/src/favicon.ico",
+              "projects/git-sandbox/src/assets"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "angular:serve"
+            "styles": [
+              "projects/git-sandbox/src/styles.scss"
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
-              "devServerTarget": "angular:serve:production"
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/git-sandbox/src/environments/environment.ts",
+                  "with": "projects/git-sandbox/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "git-sandbox:build:production"
+            },
+            "development": {
+              "browserTarget": "git-sandbox:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "git-sandbox:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/git-sandbox/src/test.ts",
+            "polyfills": "projects/git-sandbox/src/polyfills.ts",
+            "tsConfig": "projects/git-sandbox/tsconfig.spec.json",
+            "karmaConfig": "projects/git-sandbox/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/git-sandbox/src/favicon.ico",
+              "projects/git-sandbox/src/assets"
+            ],
+            "styles": [
+              "projects/git-sandbox/src/styles.scss"
+            ],
+            "scripts": []
           }
         }
       }
     }
   },
-  "defaultProject": "angular"
+  "defaultProject": "view-child"
 }
