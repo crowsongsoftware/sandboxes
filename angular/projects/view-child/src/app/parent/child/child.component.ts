@@ -5,8 +5,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './child.component.html'
 })
 export class ChildComponent implements OnInit {
-
-  constructor() { }
+  public componentName: string = "ChildComponent";
+  
+  constructor() {
+    console.log("ChildComponent; constructor");
+  }
 
   ngOnInit(): void {
   }

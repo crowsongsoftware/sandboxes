@@ -6,14 +6,20 @@ import { ChildComponent } from './child/child.component';
   templateUrl: './parent.component.html'
 })
 export class ParentComponent implements OnInit, AfterViewInit {
+  public childComponentName: string = '';
   public message: string = '';
 
-  //@ViewChild('ChildComponent') childComponent: ChildComponent = null;
+  @ViewChild(ChildComponent, { static: false }) childComponent!: ChildComponent;
 
-  constructor() { };
+  constructor() { 
+    console.log("ParentComponent..constructor");
+  };
 
   ngOnInit(): void { };
 
-  ngAfterViewInit(){ };
-
+  ngAfterViewInit(){ 
+    console.log("ParentComponent..ngAfterViewInit");
+    console.log("childComponent: ", this.childComponent);
+    console.log("childComponent.componentName: ", this.childComponent.componentName);
+  };
 };
