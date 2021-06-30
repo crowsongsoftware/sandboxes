@@ -1,12 +1,12 @@
-import { Component, OnChanges, DoCheck, OnInit, AfterViewInit, AfterContentChecked, AfterContentInit, OnDestroy} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnChanges, DoCheck, OnInit, AfterViewInit, AfterContentChecked, AfterContentInit, OnDestroy {
-  title = 'view-child';
+export class AppComponent {
+  public title = 'component-lifecycle';
   public propInitDeclaration: string = "Property Initialized at Declaration";
   public propInitConstructor: string ;
 
