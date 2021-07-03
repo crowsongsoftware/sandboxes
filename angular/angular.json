@@ -311,6 +311,109 @@
           }
         }
       }
+    },
+    "change-detection": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "root": "projects/change-detection",
+      "sourceRoot": "projects/change-detection/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/change-detection",
+            "index": "projects/change-detection/src/index.html",
+            "main": "projects/change-detection/src/main.ts",
+            "polyfills": "projects/change-detection/src/polyfills.ts",
+            "tsConfig": "projects/change-detection/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/change-detection/src/favicon.ico",
+              "projects/change-detection/src/assets"
+            ],
+            "styles": [
+              "projects/change-detection/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/change-detection/src/environments/environment.ts",
+                  "with": "projects/change-detection/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "change-detection:build:production"
+            },
+            "development": {
+              "browserTarget": "change-detection:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "change-detection:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/change-detection/src/test.ts",
+            "polyfills": "projects/change-detection/src/polyfills.ts",
+            "tsConfig": "projects/change-detection/tsconfig.spec.json",
+            "karmaConfig": "projects/change-detection/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/change-detection/src/favicon.ico",
+              "projects/change-detection/src/assets"
+            ],
+            "styles": [
+              "projects/change-detection/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
     }
   },
   "defaultProject": "view-child"
