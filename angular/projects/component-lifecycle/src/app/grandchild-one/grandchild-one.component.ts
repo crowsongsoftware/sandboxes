@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./grandchild-one.component.scss']
 })
 export class GrandchildOneComponent implements OnInit {
+  public messageOne: string = "GrandchildOneComponent";
   public propInitDeclaration: string = "Property Initialized at Declaration";
   public propInitConstructor: string ;
 
