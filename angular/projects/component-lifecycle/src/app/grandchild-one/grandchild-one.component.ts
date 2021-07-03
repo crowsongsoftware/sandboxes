@@ -80,7 +80,7 @@ export class GrandchildOneComponent implements OnInit {
   };
 
   ngOnDestroy(){
-    //this.beforeInit("ngOnDestroy");
+    //this.beforeInit("ngOnDestroky");
     console.groupCollapsed("GrandChildOneComponent: ngOnDestroy");
     console.log("propInitDeclaration", this.propInitDeclaration);
     console.log("propInitConstructor", this.propInitConstructor);
