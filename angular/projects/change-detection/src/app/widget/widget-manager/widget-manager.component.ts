@@ -8,10 +8,10 @@ import { widgetList } from '../data/widgetList';
   styleUrls: ['./widget-manager.component.scss']
 })
 export class WidgetManagerComponent implements OnInit {
-  public wigets: Array<Widget>;
+  public widgets: Array<Widget>;
 
   constructor() { 
-    this.wigets = widgetList;
+    this.widgets = widgetList;
   };
 
   ngOnInit(): void { };

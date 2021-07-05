@@ -1,18 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { WidgetManagerModule } from './widget/widget-manager/widget-manager.module';
 import { AppComponent } from './app.component';
-import { WidgetComponent } from './widget/widget.component';
-import { WidgetManagerComponent } from './widget/widget-manager/widget-manager.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    WidgetComponent,
-    WidgetManagerComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    WidgetManagerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

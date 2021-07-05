@@ -1,7 +1,20 @@
-<p>Change Detection: WidgetListComponent</p>
-<p *ngFor="let widget of widgets">
-    <div>Id: {{widget.id}}</div>
-    <div>Name: {{widget.name}}</div>
-    <div>Description: {{widget.description}}</div>
-    <div>Price: {{widget.price}}</div>
-</p>
+<!--<p>Change Detection: WidgetListComponent</p>-->
+<h1>Widget List</h1>
+<table>
+    <thead></thead>
+    <tfoot></tfoot>
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+        <tr *ngFor="let widget of widgets">
+            <td>{{widget.id}}</td>
+            <td>{{widget.name}}</td>
+            <td>{{widget.description}}</td>
+            <td>{{widget.price}}</td>
+        </tr>
+    </tbody>
+</table>
