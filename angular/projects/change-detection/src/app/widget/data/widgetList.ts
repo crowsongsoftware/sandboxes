@@ -11,12 +11,12 @@ export const widgetList: Array<Widget> = [
         id: '0002',
         name: 'widget_two', 
         description: '',
-        price: 1.25
+        price: 1.35
     },
     {
         id: '0003',
         name: 'widget_three', 
         description: '',
-        price: 1.25
+        price: 1.45
     }
 ];
