@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { WidgetListModule } from './components/widget-list/widget-list.module';
 import { WidgetManagerComponent } from './widget-manager.component';
-import { WidgetListComponent } from './components/widget/widget-list.component';
 
 @NgModule({
   declarations: [
-    WidgetManagerComponent,
-    WidgetListComponent
+    WidgetManagerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    WidgetListModule
   ],
   exports:[
     WidgetManagerComponent
